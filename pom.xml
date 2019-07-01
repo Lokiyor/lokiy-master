@@ -7,6 +7,9 @@
     <groupId>com.lokiy.cloud</groupId>
     <artifactId>lokiy-master</artifactId>
     <version>0.1</version>
+    <modules>
+        <module>lokiy-common</module>
+    </modules>
     <packaging>pom</packaging>
 
     <parent>
