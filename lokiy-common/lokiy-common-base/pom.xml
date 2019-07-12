@@ -12,4 +12,10 @@
     <artifactId>lokiy-common-base</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
 </project>

@@ -7,10 +7,12 @@
     <groupId>com.lokiy.cloud</groupId>
     <artifactId>lokiy-master</artifactId>
     <version>0.1</version>
+    <url>https://github.com/Lokiyor/lokiy-master</url>
+    <name>lokiy-master</name>
+    <packaging>jar</packaging>
     <modules>
         <module>lokiy-common</module>
     </modules>
-    <packaging>pom</packaging>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -28,16 +30,85 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <lombok.version>1.18.8</lombok.version>
+        <swagger.version>2.9.2</swagger.version>
+        <spring-mybatis-plus.version>3.1.1</spring-mybatis-plus.version>
+        <spring-druid.version>1.1.16</spring-druid.version>
+        <spring-security.version>2.1.2.RELEASE</spring-security.version>
 
     </properties>
 
     <dependencies>
 
+        <!--Lombok-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--测试依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 
     <dependencyManagement>
         <dependencies>
+            <!-- Import dependency management from Spring Boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
+            <!--swagger-->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${spring-mybatis-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${spring-druid.version}</version>
+            </dependency>
+
+            <!--稳定版本，替代spring security bom内置-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
 
         </dependencies>
     </dependencyManagement>
