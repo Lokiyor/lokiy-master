@@ -9,7 +9,7 @@
     <version>0.1</version>
     <url>https://github.com/Lokiyor/lokiy-master</url>
     <name>lokiy-master</name>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <modules>
         <module>lokiy-common</module>
     </modules>
