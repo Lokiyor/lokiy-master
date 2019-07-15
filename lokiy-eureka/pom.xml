@@ -6,7 +6,6 @@
         <groupId>com.lokiy.cloud</groupId>
         <artifactId>lokiy-master</artifactId>
         <version>0.1</version>
-        <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <artifactId>lokiy-eureka</artifactId>
     <version>0.1</version>
@@ -70,6 +69,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>lokiy-eureka</finalName>
     </build>
 
 </project>
