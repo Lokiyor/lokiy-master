@@ -1,0 +1,30 @@
+
+server:
+  port: 8888
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: lokiy-eureka
+  main:
+    allow-bean-definition-overriding: true
+  # 安全配置
+  security:
+    user:
+      name: lokiy
+      password: 1234
+# 注册中心
+eureka:
+  instance:
+    hostname: 127.0.0.1
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://lokiy:lokiy@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    eviction-interval-timer-in-ms: 10000
+    enable-self-preservation: false
+    renewal-percent-threshold: 0.9

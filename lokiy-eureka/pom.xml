@@ -11,6 +11,7 @@
     <artifactId>lokiy-eureka</artifactId>
     <version>0.1</version>
     <name>lokiy-eureka</name>
+    <packaging>jar</packaging>
     <description>Eureka for Spring Boot</description>
 
     <dependencies>
