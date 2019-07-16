@@ -14,6 +14,8 @@
         <module>lokiy-common</module>
         <module>lokiy-eureka</module>
         <module>lokiy-gateway</module>
+        <module>lokiy-modules</module>
+        <module>lokiy-middleware</module>
     </modules>
 
     <parent>
@@ -39,8 +41,9 @@
         <lombok.version>1.18.8</lombok.version>
         <swagger.version>2.9.2</swagger.version>
         <spring-mybatis-plus.version>3.1.1</spring-mybatis-plus.version>
-        <spring-druid.version>1.1.16</spring-druid.version>
-        <spring-security.version>2.1.2.RELEASE</spring-security.version>
+        <spring-druid.version>1.1.10</spring-druid.version>
+        <spring-security.version>2.1.3.RELEASE</spring-security.version>
+        <spirng-oauth2.version>2.1.3.RELEASE</spirng-oauth2.version>
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
         <security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
 
@@ -77,7 +80,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!--解决spring版本的依赖冲突-->
             <dependency>
                 <groupId>io.spring.platform</groupId>
                 <artifactId>platform-bom</artifactId>
@@ -85,7 +88,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!--spring-cloud-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -107,19 +110,21 @@
                 <version>${swagger.version}</version>
             </dependency>
 
+            <!--mybatis-plus-->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${spring-mybatis-plus.version}</version>
             </dependency>
 
+            <!--druid-->
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${spring-druid.version}</version>
             </dependency>
 
-            <!--稳定版本，替代spring security bom内置-->
+            <!--oauth-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-security</artifactId>
@@ -127,6 +132,14 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-oauth2</artifactId>
+                <version>${spirng-oauth2.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--不引入会导致spring security bom无法引用倒-->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-bom</artifactId>
