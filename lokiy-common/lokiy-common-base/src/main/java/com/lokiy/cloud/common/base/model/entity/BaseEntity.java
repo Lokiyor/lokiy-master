@@ -1,4 +1,4 @@
-package com.lokiy.common.base.entity;
+package com.lokiy.cloud.common.base.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.baomidou.mybatisplus.extension.activerecord.Model;

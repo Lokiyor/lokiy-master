@@ -17,6 +17,7 @@
         <module>lokiy-common-base</module>
         <module>lokiy-common-config</module>
         <module>lokiy-common-util</module>
+        <module>lokiy-common-security</module>
     </modules>
 
     <properties>

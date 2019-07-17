@@ -19,6 +19,12 @@
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-base</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
 </project>
