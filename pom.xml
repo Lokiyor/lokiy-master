@@ -16,6 +16,7 @@
         <module>lokiy-gateway</module>
         <module>lokiy-modules</module>
         <module>lokiy-middleware</module>
+        <module>lokiy-data</module>
     </modules>
 
     <parent>
@@ -131,13 +132,13 @@
             </dependency>
 
             <!--oauth-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-security</artifactId>
-                <version>${spring-security.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-security</artifactId>-->
+<!--                <version>${spring-security.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-oauth2</artifactId>
