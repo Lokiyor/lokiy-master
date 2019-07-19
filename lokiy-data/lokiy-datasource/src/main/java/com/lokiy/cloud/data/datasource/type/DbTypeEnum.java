@@ -1,11 +1,11 @@
-package com.lokiy.cloud.data.datasource;
+package com.lokiy.cloud.data.datasource.type;
 
 /**
  * @author Lokiy
  * @date 2019/7/18 20:29
  * @description:
  */
-public enum DataSoureEnum {
+public enum DbTypeEnum {
 
     /**
      * 数据库
@@ -17,7 +17,7 @@ public enum DataSoureEnum {
 
     private String datasourceName;
 
-    DataSoureEnum(String datasourceName) {
+    DbTypeEnum(String datasourceName) {
         this.datasourceName = datasourceName;
     }
 }

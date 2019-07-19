@@ -1,19 +1,31 @@
 package com.lokiy.cloud.data.datasource;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Lokiy
  * @date 2019/7/18 20:42
  * @description: s数据源上下文
  */
+@Slf4j
 public class DbContextHolder {
 
     private static final ThreadLocal<String> CONTEXT_HOLDER = new ThreadLocal<>();
+
+    /**
+     * 所有的数据源
+     */
+    public static List<String> dsIds = new ArrayList<>();
 
     /**
      * 设置数据源
      * @param dbTypeEnum
      */
     public static void setDbType(String dbTypeEnum) {
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<");
         CONTEXT_HOLDER.set(dbTypeEnum);
     }
 
@@ -32,4 +44,13 @@ public class DbContextHolder {
         CONTEXT_HOLDER.remove();
     }
 
+    /**
+     * 判断指定DataSrouce当前是否存在
+     *
+     * @param dsId
+     * @return
+     */
+    public static boolean containsDataSource(String dsId) {
+        return dsIds.contains(dataSourceId);
+    }
 }
