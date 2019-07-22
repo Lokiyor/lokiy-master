@@ -18,7 +18,7 @@ public class DbContextHolder {
     /**
      * 所有的数据源
      */
-    public static List<String> dsIds = new ArrayList<>();
+    public static List<String> dataSourceIds = new ArrayList<>();
 
     /**
      * 设置数据源
@@ -47,10 +47,10 @@ public class DbContextHolder {
     /**
      * 判断指定DataSrouce当前是否存在
      *
-     * @param dsId
+     * @param dataSourceId
      * @return
      */
-    public static boolean containsDataSource(String dsId) {
-        return dsIds.contains(dataSourceId);
+    public static boolean containsDataSource(String dataSourceId) {
+        return dataSourceIds.contains(dataSourceId);
     }
 }

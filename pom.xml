@@ -43,7 +43,8 @@
         <lombok.version>1.18.8</lombok.version>
         <swagger.version>2.9.2</swagger.version>
         <spring-mybatis-plus.version>3.1.1</spring-mybatis-plus.version>
-        <spring-druid.version>1.1.10</spring-druid.version>
+        <spring-druid.version>1.1.18</spring-druid.version>
+        <mysql.version>5.1.47</mysql.version>
         <spring-security.version>2.1.3.RELEASE</spring-security.version>
         <spirng-oauth2.version>2.1.3.RELEASE</spirng-oauth2.version>
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
@@ -51,6 +52,8 @@
 
 
         <hutool.version>4.5.16</hutool.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+
     </properties>
 
     <dependencies>
@@ -129,6 +132,13 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${spring-druid.version}</version>
+            </dependency>
+
+            <!--mysql-->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
             </dependency>
 
             <!--oauth-->

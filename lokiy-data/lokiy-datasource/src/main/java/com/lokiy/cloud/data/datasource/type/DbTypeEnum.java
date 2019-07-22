@@ -11,8 +11,6 @@ public enum DbTypeEnum {
      * 数据库
      */
     MASTER("master"),
-
-    SLAVE("slave"),
     ;
 
     private String datasourceName;

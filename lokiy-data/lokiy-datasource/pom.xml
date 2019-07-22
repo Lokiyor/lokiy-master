@@ -24,5 +24,20 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-base</artifactId>
+            <version>${snapshot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-util</artifactId>
+            <version>${snapshot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
     </dependencies>
 </project>
