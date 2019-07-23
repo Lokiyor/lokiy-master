@@ -28,6 +28,11 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.lokiy.cloud.data</groupId>
+            <artifactId>lokiy-datasource</artifactId>
+            <version>0.1</version>
+        </dependency>
     </dependencies>
 
     <build>
