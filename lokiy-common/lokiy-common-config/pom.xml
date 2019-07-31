@@ -17,6 +17,12 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-base</artifactId>
+            <version>${snapshot.version}</version>
+        </dependency>
     </dependencies>
 
 </project>

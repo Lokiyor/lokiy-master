@@ -17,7 +17,7 @@ public class BaseEntity extends Model{
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+    @TableId(value = "id", type = IdType.INPUT)
     @TableField(fill = FieldFill.INSERT)
     private Long id;
 
