@@ -17,6 +17,7 @@
         <module>lokiy-modules</module>
         <module>lokiy-middleware</module>
         <module>lokiy-data</module>
+        <module>lokiy-thd</module>
     </modules>
 
     <parent>
