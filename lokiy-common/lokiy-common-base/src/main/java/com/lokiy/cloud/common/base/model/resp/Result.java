@@ -13,8 +13,6 @@ import java.io.Serializable;
  * @description: return result
  */
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Result<T> implements Serializable {
 
     private boolean success = true;

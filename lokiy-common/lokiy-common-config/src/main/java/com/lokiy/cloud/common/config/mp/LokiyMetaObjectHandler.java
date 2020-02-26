@@ -26,7 +26,7 @@ public class LokiyMetaObjectHandler implements MetaObjectHandler {
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>start insert fill<<<<<<<<<<<<<<<<<<<<<<<<<");
         LocalDateTime now = LocalDateTime.now();
 
-        this.setInsertFieldValByName( GlobalConstant.BaseEntityField.DEL_FLAG, GlobalConstant.DefaultFlag.DEFAILT_DEL_FLAG, metaObject);
+        this.setInsertFieldValByName( GlobalConstant.BaseEntityField.DEL_FLAG, GlobalConstant.DefaultFlag.DEFAULT_DEL_FLAG, metaObject);
         this.setInsertFieldValByName( GlobalConstant.BaseEntityField.CREATE_TIME, now, metaObject);
         this.setInsertFieldValByName( GlobalConstant.BaseEntityField.UPDATE_TIME, now, metaObject);
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>end insert fill<<<<<<<<<<<<<<<<<<<<<<<<<");

@@ -1,7 +1,6 @@
 package com.lokiy.cloud.common.base.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
  * @description: 基础表对象
  */
 @Data
-public class BaseEntity extends Model{
+public class BaseEntity {
 
     /**
      * 主键

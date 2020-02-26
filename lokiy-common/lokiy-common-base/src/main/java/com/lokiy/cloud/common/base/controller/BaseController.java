@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
  * @description: base controller
  */
 @Slf4j
-public class BaseController {
+public abstract class BaseController {
 
     @Autowired
     protected HttpServletRequest request;

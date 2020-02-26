@@ -67,7 +67,7 @@ public class GlobalConstant {
      * 默认表示
      */
     public interface DefaultFlag {
-       Integer DEFAILT_DEL_FLAG = 1;
+       Integer DEFAULT_DEL_FLAG = 1;
 
     }
 }
