@@ -6,11 +6,13 @@
         <artifactId>lokiy-master</artifactId>
         <groupId>com.lokiy.cloud</groupId>
         <version>0.1</version>
+        <relativePath/>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.lokiy.cloud.common</groupId>
     <artifactId>lokiy-common</artifactId>
+    <version>0.1</version>
     <packaging>pom</packaging>
     <modules>
         <module>lokiy-common-core</module>
