@@ -2,6 +2,7 @@ package com.lokiy.cloud.data.datasource;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class DbContextHolder {
      */
     public static void setDbType(String dbTypeEnum) {
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<<<<<<<<");
+        LocalDateTime now = LocalDateTime.now();
         CONTEXT_HOLDER.set(dbTypeEnum);
     }
 

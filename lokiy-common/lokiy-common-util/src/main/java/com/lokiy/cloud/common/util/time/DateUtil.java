@@ -2,6 +2,9 @@ package com.lokiy.cloud.common.util.time;
 
 
 import com.lokiy.cloud.common.base.constant.GlobalConstant;
+import com.lokiy.cloud.common.base.constant.NumberConsts;
+import com.lokiy.cloud.common.base.constant.StrNumberConsts;
+import com.lokiy.cloud.common.base.constant.SymbolConsts;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -50,7 +53,7 @@ public class DateUtil {
             return localDate2Date(localDateTime);
         }
         if(YYYY_MM.equals(pattern)){
-            dateStr = dateStr + GlobalConstant.Symbol.SHORT_LINE + GlobalConstant.StrNumber.ZERO_ONE;
+            dateStr = dateStr + SymbolConsts.SHORT_LINE + StrNumberConsts.ZERO_ONE;
             df = DateTimeFormatter.ofPattern(YYYY_MM_DD);
             LocalDate localDateTime = LocalDate.parse(dateStr, df);
             return localDate2Date(localDateTime);
@@ -196,8 +199,8 @@ public class DateUtil {
      * @return
      */
     public static String getYearAndMonth(int year, int month){
-        return year + GlobalConstant.Symbol.SHORT_LINE + (month > GlobalConstant.Number.NINE_INT?
-                month : GlobalConstant.StrNumber.ZERO + month);
+        return year + SymbolConsts.SHORT_LINE + (month > NumberConsts.NINE_INT?
+                month : StrNumberConsts.ZERO + month);
     }
 
     /**
@@ -209,8 +212,8 @@ public class DateUtil {
         LocalDateTime localDateTime = date2LocalDateTime(date);
         int year = localDateTime.getYear();
         int month = localDateTime.getMonthValue();
-        return year + GlobalConstant.Symbol.SHORT_LINE + (month > GlobalConstant.Number.NINE_INT?
-                month : GlobalConstant.StrNumber.ZERO + month);
+        return year + SymbolConsts.SHORT_LINE + (month > NumberConsts.NINE_INT?
+                month : StrNumberConsts.ZERO + month);
     }
 
 

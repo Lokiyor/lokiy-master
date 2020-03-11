@@ -1,16 +1,2 @@
 server:
   port: 10000
-spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/lokiy_master?useUnicode=true&characterEncoding=UTF-8&autoReconnect=false&useSSL=false&failOverReadOnly=true&loadBalanceStrategy=random&readFormhcNoSlaves=true
-    username: root
-    password: 1234
-custom:
-  datasource:
-    names: a
-    a:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://127.0.0.1:3306/lokiy-back?useUnicode=true&characterEncoding=UTF-8&autoReconnect=false&useSSL=false&failOverReadOnly=true&loadBalanceStrategy=random&readFormhcNoSlaves=true
-      username: root
-      password: 1234

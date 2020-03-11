@@ -30,6 +30,7 @@ public class BaseEntity {
     /**
      * 创建人
      */
+    @TableField(fill = FieldFill.INSERT)
     private String createUser;
 
     /**
@@ -41,6 +42,7 @@ public class BaseEntity {
     /**
      * 更新人
      */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateUser;
 
     /**

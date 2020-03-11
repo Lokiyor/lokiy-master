@@ -9,7 +9,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.lokiy.cloud.thd</groupId>
     <artifactId>lokiy-thd</artifactId>
+    <version>0.1</version>
+    <name>lokiy-thd</name>
+    <packaging>pom</packaging>
 
+
+    <modules>
+        <module>lokiy-sms</module>
+    </modules>
 
 </project>

@@ -11,7 +11,10 @@
 
     <groupId>com.lokiy.cloud.data</groupId>
     <artifactId>lokiy-data</artifactId>
+    <version>0.1</version>
+    <name>lokiy-data</name>
     <packaging>pom</packaging>
+
     <modules>
         <module>lokiy-datasource</module>
     </modules>

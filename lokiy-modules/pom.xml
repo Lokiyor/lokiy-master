@@ -9,6 +9,7 @@
         <version>0.1</version>
     </parent>
     <packaging>pom</packaging>
+    <version>0.1</version>
     <artifactId>lokiy-modules</artifactId>
 
 

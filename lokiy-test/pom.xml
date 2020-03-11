@@ -6,6 +6,7 @@
         <groupId>com.lokiy.cloud</groupId>
         <artifactId>lokiy-master</artifactId>
         <version>0.1</version>
+        <relativePath/>
     </parent>
     <artifactId>lokiy-test</artifactId>
     <version>0.1</version>
@@ -28,11 +29,6 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.lokiy.cloud.data</groupId>
-            <artifactId>lokiy-datasource</artifactId>
-            <version>0.1</version>
-        </dependency>
     </dependencies>
 
     <build>
@@ -40,16 +36,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compiler.source}</source>
-                    <target>${maven.compiler.target}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
             </plugin>
         </plugins>
         <finalName>lokiy-test</finalName>

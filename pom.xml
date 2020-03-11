@@ -3,10 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.lokiy.cloud</groupId>
     <artifactId>lokiy-master</artifactId>
-    <version>${snapshot.version}</version>
+    <version>0.1</version>
     <url>https://github.com/Lokiyor/lokiy-master</url>
     <name>lokiy-master</name>
     <packaging>pom</packaging>
@@ -20,13 +19,6 @@
         <module>lokiy-thd</module>
     </modules>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.4.RELEASE</version>
-<!--        <relativePath/>-->
-    </parent>
-
     <developers>
         <developer>
             <name>Lokiy</name>
@@ -38,7 +30,13 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
         <snapshot.version>0.1</snapshot.version>
+
+        <lombok.version>1.18.12</lombok.version>
+        <swagger.version>2.9.2</swagger.version>
 
         <spring-boot.version>2.2.4.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR2</spring-cloud.version>
@@ -55,9 +53,10 @@
         <security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
 
 
-        <lombok.version>1.18.12</lombok.version>
-        <swagger.version>2.9.2</swagger.version>
-        <hutool.version>5.1.4</hutool.version>
+        <!--utils-->
+        <hutool.version>5.2.0</hutool.version>
+        <collections4.version>4.4</collections4.version>
+        <lang3.version>3.9</lang3.version>
 
     </properties>
 
@@ -91,6 +90,39 @@
     <!--版本库-->
     <dependencyManagement>
         <dependencies>
+
+            <!--自定义依赖-->
+            <dependency>
+                <groupId>com.lokiy.cloud.common</groupId>
+                <artifactId>lokiy-common-base</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lokiy.cloud.common</groupId>
+                <artifactId>lokiy-common-config</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lokiy.cloud.common</groupId>
+                <artifactId>lokiy-common-core</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lokiy.cloud.common</groupId>
+                <artifactId>lokiy-common-security</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.lokiy.cloud.common</groupId>
+                <artifactId>lokiy-common-util</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
+
+
+
+
+
+
             <!-- Import dependency management from Spring Boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -99,14 +131,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--解决spring版本的依赖冲突-->
-            <dependency>
-                <groupId>io.spring.platform</groupId>
-                <artifactId>platform-bom</artifactId>
-                <version>${spring-platform.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+
             <!--spring-cloud-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -115,6 +140,19 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+
 
             <!--undertow容器-->
             <dependency>
@@ -189,11 +227,21 @@
 
 
 
-            <!--一些帮助类-->
+            <!--util-->
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${collections4.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${lang3.version}</version>
             </dependency>
 
 
@@ -244,6 +292,7 @@
                 <enabled>true</enabled>
             </releases>
         </repository>
+
     </repositories>
 
     <pluginRepositories>

@@ -1,9 +1,7 @@
 package com.lokiy.cloud.test;
 
-import com.lokiy.cloud.data.datasource.register.DynamicDataSourceRegister;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Import;
 
 
 /**
@@ -12,7 +10,6 @@ import org.springframework.context.annotation.Import;
  * @description: test-app
  */
 @SpringBootApplication
-@Import(DynamicDataSourceRegister.class)
 public class LokiyTestApplication {
 
     public static void main(String[] args) {

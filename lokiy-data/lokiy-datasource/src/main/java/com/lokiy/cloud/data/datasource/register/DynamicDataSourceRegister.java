@@ -1,6 +1,6 @@
 package com.lokiy.cloud.data.datasource.register;
 
-import com.lokiy.cloud.common.base.constant.GlobalConstant;
+import com.lokiy.cloud.common.base.constant.SymbolConsts;
 import com.lokiy.cloud.data.datasource.DbContextHolder;
 import com.lokiy.cloud.data.datasource.rout.DynamicDataSource;
 import lombok.extern.slf4j.Slf4j;
@@ -78,7 +78,7 @@ public class DynamicDataSourceRegister implements ImportBeanDefinitionRegistrar,
         if(StringUtils.isBlank(dsPrefixs)){
             return;
         }
-        for (String dsPrefix : dsPrefixs.split(GlobalConstant.Symbol.COMMA)) {
+        for (String dsPrefix : dsPrefixs.split(SymbolConsts.COMMA)) {
             // 多个数据源
             Map<String, Object> dsMap = new HashMap<>(8);
             dsMap.put("driver-class-name", env.getProperty("custom.datasource." + dsPrefix + ".driver-class-name"));

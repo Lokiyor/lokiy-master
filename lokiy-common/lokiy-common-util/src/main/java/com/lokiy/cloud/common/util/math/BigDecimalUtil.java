@@ -1,6 +1,7 @@
 package com.lokiy.cloud.common.util.math;
 
 import com.lokiy.cloud.common.base.constant.GlobalConstant;
+import com.lokiy.cloud.common.base.constant.NumberConsts;
 
 import java.math.BigDecimal;
 
@@ -53,6 +54,6 @@ public class BigDecimalUtil {
      */
     public static BigDecimal divide(String v1, String v2){
         BigDecimal b = new BigDecimal(v1);
-        return b.divide(new BigDecimal(v2), GlobalConstant.Number.TWO_INT, BigDecimal.ROUND_HALF_UP);
+        return b.divide(new BigDecimal(v2), NumberConsts.TWO_INT, BigDecimal.ROUND_HALF_UP);
     }
 }

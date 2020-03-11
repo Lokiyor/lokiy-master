@@ -6,7 +6,7 @@
         <artifactId>lokiy-master</artifactId>
         <groupId>com.lokiy.cloud</groupId>
         <version>0.1</version>
-        <relativePath/>
+        <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -26,5 +26,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    
 
 </project>

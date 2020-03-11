@@ -6,10 +6,19 @@
         <artifactId>lokiy-common</artifactId>
         <groupId>com.lokiy.cloud.common</groupId>
         <version>0.1</version>
+        <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lokiy-common-core</artifactId>
+    <version>0.1</version>
+    <name>lokiy-common-core</name>
+    <packaging>jar</packaging>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-base</artifactId>
+        </dependency>
+    </dependencies>
 </project>
