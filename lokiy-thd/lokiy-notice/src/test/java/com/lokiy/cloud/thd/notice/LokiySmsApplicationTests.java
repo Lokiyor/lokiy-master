@@ -1,4 +1,4 @@
-package com.lokiy.cloud.thd.sms;
+package com.lokiy.cloud.thd.notice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

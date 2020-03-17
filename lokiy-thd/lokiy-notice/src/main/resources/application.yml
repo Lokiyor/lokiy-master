@@ -1,0 +1,33 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: lokiy-sms
+  profiles:
+    active: dev
+  mail:
+    host: smtp.qiye.163.com
+    # 开启ssl 端口为 465  否则为 25
+    port: 465
+    username: xxxxx@xxxxx.com
+    password: xxxxxx
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          ssl:
+            enable: true
+
+logging:
+  config: classpath:logback-spring.xml
+
+
+
+notice:
+  jg:
+    app-key: xxxxxxxxxxxxxxxxxxxxxxxx
+    master-secret: xxxxxxxxxxxxxxxxxxxxxxxx

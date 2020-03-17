@@ -17,7 +17,7 @@
 
 
     <modules>
-        <module>lokiy-sms</module>
+        <module>lokiy-notice</module>
     </modules>
 
 </project>

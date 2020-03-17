@@ -13,6 +13,12 @@ public enum ErrorCodeEnum {
     SUCCESS(0, "SUCCESS"),
 
     UNKNOWN_ERROR( 500, "未知错误"),
+
+
+    /**
+     * 极光相关错误信息
+     */
+    JG_SMS_SEND_ERROR(71000,"极光信息发送失败"),
     ;
 
 
@@ -39,6 +45,6 @@ public enum ErrorCodeEnum {
                 return ece;
             }
         }
-        return null;
+        return UNKNOWN_ERROR;
     }
 }
