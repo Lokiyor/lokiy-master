@@ -4,6 +4,7 @@ import cn.jiguang.common.resp.APIConnectionException;
 import cn.jiguang.common.resp.APIRequestException;
 import cn.jsms.api.JSMSClient;
 import cn.jsms.api.SendSMSResult;
+import cn.jsms.api.ValidSMSResult;
 import cn.jsms.api.common.model.SMSPayload;
 import com.lokiy.cloud.common.base.enums.ErrorCodeEnum;
 import com.lokiy.cloud.common.base.exception.JgException;
@@ -83,5 +84,53 @@ public class JsmsUtil {
         return false;
     }
 
+
+
+
+
+
+
+    /**
+     * 生成发送短信验证码
+     * @param mobile
+     * @param tempId
+     * @return
+     */
+    public String generateCode(String mobile, Integer tempId){
+        SMSPayload smsPayload = SMSPayload.newBuilder()
+                .setMobileNumber(mobile)
+                .setTempId(tempId)
+                .build();
+        try {
+            SendSMSResult smsResult = jsmsClient.sendSMSCode(smsPayload);
+            if(smsResult.isResultOK()){
+                log.info("{},短信发送成功！", mobile);
+                return smsResult.getMessageId();
+            }
+            log.error("{},短信发送失败！,{}", mobile, smsResult.getResponseCode());
+        } catch (APIConnectionException | APIRequestException e) {
+            e.printStackTrace();
+            log.error("发送验证码短信发生错误:{}", e.getMessage(), e);
+        }
+        throw new JgException(ErrorCodeEnum.JG_SMS_CODE_SEND_ERROR);
+    }
+
+    /**
+     * 校验验证码
+     * @param msgId 之前返回得messageId 可存在redis中
+     * @param vCode 用户输入的code
+     * @return
+     */
+    public boolean checkCode(String msgId, String vCode){
+        try {
+            ValidSMSResult validSmsResult = jsmsClient.sendValidSMSCode(msgId, vCode);
+            return validSmsResult.getIsValid();
+        } catch (APIConnectionException | APIRequestException e) {
+            e.printStackTrace();
+            log.error("验证验证码发生错误:{}", e.getMessage(), e);
+        }
+        throw new JgException(ErrorCodeEnum.JG_SMS_CODE_CHECK_ERROR);
+
+    }
 
 }

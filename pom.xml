@@ -62,6 +62,8 @@
         <jpush.version>3.4.3</jpush.version>
         <jsms.version>1.2.9</jsms.version>
         <jiguang-common.version>1.1.7</jiguang-common.version>
+
+        <fastjson.version>1.2.66</fastjson.version>
     </properties>
 
     <!--全局依赖-->
@@ -73,6 +75,9 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
+
+
+
 
 
         <!--swagger-->
@@ -163,6 +168,11 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
 
 
             <!--undertow容器-->
@@ -172,12 +182,6 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
-            <!--email-->
-           <!-- <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-mail</artifactId>
-                <version>${spring-boot.version}</version>
-            </dependency>-->
 
 
             <!--测试依赖-->

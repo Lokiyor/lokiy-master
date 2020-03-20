@@ -4,12 +4,39 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>lokiy-middleware</artifactId>
-        <groupId>com.lokiy.cloud</groupId>
+        <groupId>com.lokiy.cloud.middleware</groupId>
         <version>0.1</version>
+        <relativePath>../</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>lokiy-redis</artifactId>
+    <version>0.1</version>
+    <name>lokiy-redis</name>
+    <packaging>jar</packaging>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.66</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.2</version>
+        </dependency>
+    </dependencies>
 
 </project>

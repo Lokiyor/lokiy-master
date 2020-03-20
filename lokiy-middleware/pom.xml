@@ -9,7 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.lokiy.cloud.middleware</groupId>
     <artifactId>lokiy-middleware</artifactId>
+    <version>0.1</version>
+    <name>lokiy-middleware</name>
     <packaging>pom</packaging>
     <modules>
         <module>lokiy-redis</module>

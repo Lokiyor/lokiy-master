@@ -19,6 +19,8 @@ public enum ErrorCodeEnum {
      * 极光相关错误信息
      */
     JG_SMS_SEND_ERROR(71000,"极光信息发送失败"),
+    JG_SMS_CODE_SEND_ERROR(71100,"极光验证码短信发送失败"),
+    JG_SMS_CODE_CHECK_ERROR(71100,"极光验证码短信验证失败"),
     ;
 
 
