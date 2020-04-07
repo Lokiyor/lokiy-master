@@ -1,6 +1,6 @@
 package com.lokiy.cloud.common.base.exception;
 
-import com.lokiy.cloud.common.base.enums.ErrorCodeEnum;
+import com.lokiy.cloud.common.base.enums.CodeEnum;
 
 import java.io.Serializable;
 
@@ -50,7 +50,7 @@ public class BusinessException extends RuntimeException implements Serializable 
         this.code = code;
     }
 
-    public BusinessException(ErrorCodeEnum errorCodeEnum, Object... args) {
+    public BusinessException(CodeEnum errorCodeEnum, Object... args) {
         super(String.format(errorCodeEnum.getMsg(), args));
         this.code = errorCodeEnum.getCode();
     }

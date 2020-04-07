@@ -6,15 +6,12 @@ import cn.jsms.api.JSMSClient;
 import cn.jsms.api.SendSMSResult;
 import cn.jsms.api.ValidSMSResult;
 import cn.jsms.api.common.model.SMSPayload;
-import com.lokiy.cloud.common.base.enums.ErrorCodeEnum;
+import com.lokiy.cloud.common.base.enums.CodeEnum;
 import com.lokiy.cloud.common.base.exception.JgException;
-import com.lokiy.cloud.common.base.model.other.BaseKeyValue;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -112,7 +109,7 @@ public class JsmsUtil {
             e.printStackTrace();
             log.error("发送验证码短信发生错误:{}", e.getMessage(), e);
         }
-        throw new JgException(ErrorCodeEnum.JG_SMS_CODE_SEND_ERROR);
+        throw new JgException(CodeEnum.JG_SMS_CODE_SEND_ERROR);
     }
 
     /**
@@ -129,7 +126,7 @@ public class JsmsUtil {
             e.printStackTrace();
             log.error("验证验证码发生错误:{}", e.getMessage(), e);
         }
-        throw new JgException(ErrorCodeEnum.JG_SMS_CODE_CHECK_ERROR);
+        throw new JgException(CodeEnum.JG_SMS_CODE_CHECK_ERROR);
 
     }
 

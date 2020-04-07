@@ -1,16 +1,22 @@
 package com.lokiy.cloud.common.base.enums;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 /**
  * @author Lokiy
  * @date 2019/7/17 11:43
  * @description: error code enum
  */
-public enum ErrorCodeEnum {
+@AllArgsConstructor
+@Getter
+public enum CodeEnum {
 
     /**
      * 成功标识
      */
-    SUCCESS(0, "SUCCESS"),
+    SUCCESS(200, "SUCCESS"),
 
     UNKNOWN_ERROR( 500, "未知错误"),
 
@@ -23,28 +29,15 @@ public enum ErrorCodeEnum {
     JG_SMS_CODE_CHECK_ERROR(71100,"极光验证码短信验证失败"),
     ;
 
-
     private Integer code;
 
     private String msg;
 
-    public Integer getCode() {
-        return code;
-    }
 
-    public String getMsg() {
-        return msg;
-    }
-
-    ErrorCodeEnum(Integer code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }
-
-    public static ErrorCodeEnum getErrorCodeEnum(Integer code) {
-        for (ErrorCodeEnum ece : values()) {
-            if (ece.code.equals(code)) {
-                return ece;
+    public static CodeEnum getErrorCodeEnum(Integer code) {
+        for (CodeEnum ce : values()) {
+            if (ce.code.equals(code)) {
+                return ce;
             }
         }
         return UNKNOWN_ERROR;

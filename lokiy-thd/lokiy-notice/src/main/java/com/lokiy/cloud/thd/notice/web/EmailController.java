@@ -1,6 +1,6 @@
 package com.lokiy.cloud.thd.notice.web;
 
-import com.lokiy.cloud.common.base.model.resp.Result;
+import com.lokiy.cloud.common.base.model.resp.R;
 import com.lokiy.cloud.thd.notice.email.util.EmailUtil;
 import com.lokiy.cloud.thd.notice.model.dto.EmailMsgDTO;
 import io.swagger.annotations.Api;
@@ -27,12 +27,12 @@ public class EmailController {
 
     @RequestMapping("/send")
     @ApiOperation("发送邮件")
-    public Result sendEmail(@RequestBody EmailMsgDTO emailMsgDTO){
+    public R sendEmail(@RequestBody EmailMsgDTO emailMsgDTO){
         emailUtil.sendMail(
                 emailMsgDTO.getToEmail(),
                 emailMsgDTO.getSubject(),
                 emailMsgDTO.getContent());
-        return Result.success();
+        return R.success();
     }
 
 

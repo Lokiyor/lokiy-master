@@ -24,8 +24,8 @@ public class JsmsServiceImpl {
      * @return msg
      */
     public String getCode(String mobile){
-        jsmsUtil.generateCode()
+        String s = jsmsUtil.generateCode(mobile,111);
 
-
+        return s;
     }
 }

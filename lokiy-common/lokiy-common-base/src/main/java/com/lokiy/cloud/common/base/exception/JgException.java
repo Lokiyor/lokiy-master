@@ -1,6 +1,6 @@
 package com.lokiy.cloud.common.base.exception;
 
-import com.lokiy.cloud.common.base.enums.ErrorCodeEnum;
+import com.lokiy.cloud.common.base.enums.CodeEnum;
 
 /**
  * @author Lokiy
@@ -13,7 +13,7 @@ public class JgException extends BusinessException {
         super(errCode,msg);
     }
 
-    public JgException(ErrorCodeEnum ec) {
+    public JgException(CodeEnum ec) {
         super(ec);
     }
 

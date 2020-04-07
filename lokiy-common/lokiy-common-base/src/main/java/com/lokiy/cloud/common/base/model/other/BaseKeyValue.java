@@ -16,7 +16,13 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class BaseKeyValue<K, V> implements Serializable {
 
+    /**
+     * 键
+     */
     private K key;
 
+    /**
+     * 值
+     */
     private V value;
 }
