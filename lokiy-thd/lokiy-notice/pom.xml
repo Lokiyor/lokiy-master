@@ -20,6 +20,15 @@
             <groupId>com.lokiy.cloud.common</groupId>
             <artifactId>lokiy-common-base</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.lokiy.cloud.middleware</groupId>
+            <artifactId>lokiy-redis</artifactId>
+        </dependency>
 
 
         <dependency>

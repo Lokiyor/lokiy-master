@@ -131,6 +131,11 @@
             </dependency>
 
 
+            <dependency>
+                <groupId>com.lokiy.cloud.middleware</groupId>
+                <artifactId>lokiy-redis</artifactId>
+                <version>${snapshot.version}</version>
+            </dependency>
 
 
 
