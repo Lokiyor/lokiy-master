@@ -31,3 +31,5 @@ notice:
   jg:
     app-key: xxxxxxxxxxxxxxxxxxxxxxxx
     master-secret: xxxxxxxxxxxxxxxxxxxxxxxx
+  jpush:
+    ios-env: false

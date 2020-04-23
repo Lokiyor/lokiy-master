@@ -1,6 +1,8 @@
 package com.lokiy.cloud.common.base.model.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -11,6 +13,7 @@ import java.time.LocalDateTime;
  * @description: 基础表对象
  */
 @Data
+@ApiModel
 public class BaseEntity {
 
     /**
@@ -18,6 +21,7 @@ public class BaseEntity {
      */
     @TableId(value = "id", type = IdType.INPUT)
     @TableField(fill = FieldFill.INSERT)
+    @ApiModelProperty("主键id")
     private Long id;
 
     /**
@@ -25,11 +29,13 @@ public class BaseEntity {
      */
     @TableLogic
     @TableField(fill = FieldFill.INSERT)
+    @ApiModelProperty("删除标识")
     private Integer delFlag;
 
     /**
      * 创建人
      */
+    @ApiModelProperty("创建人")
     @TableField(fill = FieldFill.INSERT)
     private String createUser;
 
@@ -37,11 +43,13 @@ public class BaseEntity {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
+    @ApiModelProperty("创建时间")
     private LocalDateTime createTime;
 
     /**
      * 更新人
      */
+    @ApiModelProperty("更新人")
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateUser;
 
@@ -49,5 +57,6 @@ public class BaseEntity {
      * 更新时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
+    @ApiModelProperty("更新时间")
     private LocalDateTime updateTime;
 }

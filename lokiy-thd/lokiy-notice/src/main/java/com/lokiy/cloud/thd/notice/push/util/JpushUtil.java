@@ -10,30 +10,39 @@ import cn.jpush.api.push.model.Options;
 import cn.jpush.api.push.model.Platform;
 import cn.jpush.api.push.model.PushPayload;
 import cn.jpush.api.push.model.audience.Audience;
+import cn.jpush.api.push.model.notification.AndroidNotification;
+import cn.jpush.api.push.model.notification.IosNotification;
 import cn.jpush.api.push.model.notification.Notification;
+import cn.jpush.api.push.model.notification.WinphoneNotification;
 import com.lokiy.cloud.thd.notice.model.bo.JpushMsg;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 
 /**
  * @author Lokiy
  * @date 2020/3/16 15:19
- * @description:  Alert-弹窗通知  Msg-通知栏消息
+ * @description:  Alert-通知栏消息  Msg-自定义消息
  */
 @Component
 @Slf4j
 public class JpushUtil {
 
 
-    @Autowired
-    private JPushClient jPushClient;
+    @Value("${notice.jg.app-key}")
+    private String appKey;
+
+    @Value("${notice.jg.master-secret}")
+    private String masterSecret;
 
     /**
      * ios环境
      */
-    private boolean iosEnv = true;
+    @Value("${notice.jpush.ios-env}")
+    private boolean iosEnv;
+
 
 
 
@@ -111,7 +120,7 @@ public class JpushUtil {
         if (alias.length > 0) {
             audience = Audience.alias(alias);
         } else {
-          return false;
+            return false;
         }
         PushPayload payload = buildMsgPayload(platform, audience, jpushMsg);
         return push(payload);
@@ -119,7 +128,7 @@ public class JpushUtil {
 
 
     /**
-     * 详细信息构造
+     * 自定义消息
      * @param platform
      * @param audience
      * @param jpushMsg
@@ -149,85 +158,103 @@ public class JpushUtil {
 
     /**
      * 根据别名推送消息
-     * @param content
+     * @param jpushMsg
      * @param alias
      * @return
      */
-    public boolean pushAlertByAlias(String content, String... alias) {
-        return pushAlertByAudience(Audience.alias(alias), content);
+    public boolean pushAlertByAlias(JpushMsg jpushMsg, String... alias) {
+        return pushAlertByAudience(Audience.alias(alias), jpushMsg);
     }
 
     /**
      * 根据标签推送消息
-     * @param content
+     * @param jpushMsg
      * @param tag
      * @return
      */
-    public boolean pushAlertByTag(String content, String... tag) {
-        return pushAlertByAudience(Audience.tag(tag), content);
+    public boolean pushAlertByTag(JpushMsg jpushMsg, String... tag) {
+        return pushAlertByAudience(Audience.tag(tag), jpushMsg);
     }
 
     /**
      * 根据用户推送消息
      * @param audience
-     * @param content
+     * @param jpushMsg
      * @return
      */
-    public boolean pushAlertByAudience(Audience audience, String content) {
-        return pushAlertPlatformAndAudience(Platform.all(), audience, content);
+    public boolean pushAlertByAudience(Audience audience, JpushMsg jpushMsg) {
+        return pushAlertPlatformAndAudience(Platform.all(), audience, jpushMsg);
     }
 
 
     /**
      * 推送所有
-     * @param content
+     * @param jpushMsg
      * @return
      */
-    public boolean pushAlertToAll(String content) {
-        return pushAlertByPlatform(Platform.all(), content);
+    public boolean pushAlertToAll(JpushMsg jpushMsg) {
+        return pushAlertByPlatform(Platform.all(), jpushMsg);
     }
 
     /**
      * 推送安卓
-     * @param content
+     * @param jpushMsg
      * @return
      */
-    public boolean pushAlertToAndroid(String content) {
-        return pushAlertByPlatform(Platform.android(), content);
+    public boolean pushAlertToAndroid(JpushMsg jpushMsg) {
+        return pushAlertByPlatform(Platform.android(), jpushMsg);
     }
 
     /**
      * 推送ios
-     * @param content
+     * @param jpushMsg
      * @return
      */
-    public boolean pushAlertToIos(String content) {
-        return pushAlertByPlatform(Platform.ios(), content);
+    public boolean pushAlertToIos(JpushMsg jpushMsg) {
+        return pushAlertByPlatform(Platform.ios(), jpushMsg);
     }
 
 
     /**
      * 根据平台推送
      * @param platform
-     * @param content
+     * @param jpushMsg
      * @return
      */
-    public boolean pushAlertByPlatform(Platform platform, String content) {
-        return pushAlertPlatformAndAudience(platform, Audience.all(), content);
+    public boolean pushAlertByPlatform(Platform platform, JpushMsg jpushMsg) {
+        return pushAlertPlatformAndAudience(platform, Audience.all(), jpushMsg);
     }
 
     /**
      * 根据平台和标签推送
      * @param platform
      * @param audience
-     * @param content
      * @return
      */
-    public boolean pushAlertPlatformAndAudience(Platform platform, Audience audience, String content) {
+    public boolean pushAlertPlatformAndAudience(Platform platform, Audience audience, JpushMsg jpushMsg) {
         PushPayload payload = PushPayload.newBuilder()
                 .setPlatform(platform)
                 .setAudience(audience)
-                .setNotification(Notification.alert(content))
+                .setNotification(Notification.newBuilder()
+                        .setAlert(jpushMsg.getContent())
+                        .addPlatformNotification(
+                                AndroidNotification.newBuilder()
+                                        .setTitle(jpushMsg.getTitle())
+                                        .setAlert(jpushMsg.getContent())
+                                        .addExtras(jpushMsg.getExtras())
+                                        .build())
+                        .addPlatformNotification(
+                                IosNotification.newBuilder()
+                                        .setAlert(jpushMsg.getContent())
+                                        .addExtras(jpushMsg.getExtras())
+                                        .build())
+                        .addPlatformNotification(
+                                WinphoneNotification.newBuilder()
+                                        .setTitle(jpushMsg.getTitle())
+                                        .setAlert(jpushMsg.getContent())
+                                        .addExtras(jpushMsg.getExtras())
+                                        .build())
+                        .build())
                 .setOptions(Options.newBuilder().setApnsProduction(iosEnv).build())
                 .build();
         return push(payload);
@@ -235,11 +262,12 @@ public class JpushUtil {
 
 
     /**
-     * 推送
+     * 极光推送
      * @param payload
      * @return
      */
     public boolean push(PushPayload payload){
+        JPushClient jPushClient = new JPushClient(masterSecret, appKey, null, ClientConfig.getInstance());
         try {
             PushResult pushResult = jPushClient.sendPush(payload);
             log.info("极光推送结果,ResponseCode:{} ,{}", pushResult.getResponseCode(), pushResult.getOriginalContent());
