@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -613,6 +614,145 @@ public final class RedisUtil {
 			return 0;
 		}
 	}
+
+
+
+	//=================zset=============================
+
+	/**
+	 * 添加数据
+	 *
+	 * 添加方式：
+	 * 1.创建一个set集合
+	 * Set<ZSetOperations.TypedTuple<Object>> sets=new HashSet<>();
+	 * 2.创建一个有序集合
+	 ZSetOperations.TypedTuple<Object> objectTypedTuple1 = new DefaultTypedTuple<Object>(value,排序的数值，越小越在前);
+	 4.放入set集合
+	 sets.add(objectTypedTuple1);
+	 5.放入缓存
+	 reidsImpl.Zadd("zSet", list);
+	 * @param key
+	 * @param tuples
+	 */
+	public void zAdd(String key,Set<ZSetOperations.TypedTuple<Object>> tuples) {
+		redisTemplate.opsForZSet().add(key, tuples);
+	}
+
+	/**
+	 * 放单个
+	 * @param key
+	 * @param value
+	 * @param score
+	 */
+	public void zAdd(String key,Object value, double score) {
+		redisTemplate.opsForZSet().add(key, value ,score);
+	}
+
+	/**
+	 * 获取有序集合的成员数
+	 * @param key
+	 * @return
+	 */
+	public Long zCard(String key) {
+		return redisTemplate.opsForZSet().zCard(key);
+	}
+
+	/**
+	 * 计算在有序集合中指定区间分数的成员数
+	 * @param key
+	 * @param min 最小排序分数
+	 * @param max 最大排序分数
+	 * @return
+	 */
+	public Long zCount(String key,Double min,Double max) {
+		return redisTemplate.opsForZSet().count(key, min, max);
+	}
+
+	/**
+	 * 获取有序集合下标区间 start 至 end 的成员  分数值从小到大排列
+	 * @param key
+	 * @param start
+	 * @param end
+	 */
+	public Set<Object> zRange(String key,int start,int end) {
+		return redisTemplate.opsForZSet().range(key, start, end);
+	}
+
+	/**
+	 * 获取有序集合下标区间 start 至 end 的成员  分数值从大到小排列
+	 * @param key
+	 * @param start
+	 * @param end
+	 */
+	public Set<Object> reverseRange(String key,int start,int end) {
+		return redisTemplate.opsForZSet().reverseRange(key, start, end);
+	}
+
+	/**
+	 * 返回 分数在min至max之间的数据 按分数值递减(从大到小)的次序排列。
+	 * @param key
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public Set<Object> reverseRange(String key,Double min,Double max) {
+		return redisTemplate.opsForZSet().reverseRangeByScore(key, min, max);
+	}
+
+	/**
+	 * 返回指定成员的下标
+	 * @param key
+	 * @param value
+	 * @return
+	 */
+	public Long zRank(String key,Object value) {
+		return redisTemplate.opsForZSet().rank(key, value);
+	}
+
+	/**
+	 * 删除key的指定元素
+	 * @param key
+	 * @param values
+	 * @return
+	 */
+	public Long zRemoveValue(String key,Object values) {
+		return redisTemplate.opsForZSet().remove( key, values);
+	}
+
+	/**
+	 * 移除下标从start至end的元素
+	 * @param key
+	 * @param start
+	 * @param end
+	 * @return
+	 */
+	public Long zRemoveRange(String key,int start,int end) {
+		return redisTemplate.opsForZSet().removeRange(key, start, end);
+	}
+
+
+	/**
+	 * 移除分数从min至max的元素
+	 * @param key
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public Long zRemoveRangeByScore(String key,Double min,Double max) {
+		return redisTemplate.opsForZSet().removeRangeByScore(key, min, max);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * 获取同步锁
