@@ -42,4 +42,14 @@ public interface NoticeRedisConsts {
      * 消息 极光推送 延迟队列 锁 , 拼接当前推送 任务id
      */
     String NOTICE_JPUSH_DELAY_QUEUE_LOCK = "notice_jpush_delay_queue_lock_";
+
+
+    /**
+     * 延迟消息处理锁
+     */
+    String MC_JPUSH_DELAY_QUEUE_DEAL_LOCK = "mc_jpush_delay_queue_deal_lock_";
+    /**
+     * 延迟队列处理过期锁
+     */
+    Long MC_JPUSH_DELAY_QUEUE_DEAL_LOCK_EXPIRE_TIME = 30L;
 }

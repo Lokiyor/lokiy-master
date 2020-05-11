@@ -1,8 +1,5 @@
 package com.lokiy.cloud.thd.notice.handle;
 
-import cn.hutool.core.collection.CollectionUtil;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
 import com.lokiy.cloud.middleware.redis.RedisUtil;
 import com.lokiy.cloud.thd.notice.constant.NoticeRedisConsts;
 import com.lokiy.cloud.thd.notice.model.bo.JpushMsgTask;
@@ -13,9 +10,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @ClassName JpushDelayTask
@@ -55,9 +50,16 @@ public class JpushDelayTaskHandle {
      */
     @Scheduled(cron = "0 * * * * ?")
     public void dealDelayQueue(){
+        if(!redisUtil.getLock(NoticeRedisConsts.MC_JPUSH_DELAY_QUEUE_DEAL_LOCK, NoticeRedisConsts.MC_JPUSH_DELAY_QUEUE_DEAL_LOCK_EXPIRE_TIME)){
+            return;
+        }
+
         log.info("JpushDelayTaskHandle.dealDelayQueue------>开始处理推送延迟队列,队列大小：{}", getDelayQueueCount());
         //延迟队列可处理数 预留100频率以放1分钟内再有推送
         int canDealCount = (int) (FREQUENCY_LIMIT - PRE_DEAL_LIMIT - getFrequencyCount());
+        if(canDealCount <= 0){
+            return;
+        }
         Set<Object> jpushMsgTaskSet = redisUtil.zRange(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE, 0, canDealCount);
 
         //筛选推送
@@ -69,13 +71,10 @@ public class JpushDelayTaskHandle {
                 if(pushFlag){
                     //推送成功,去除延迟队列中此数据
                     redisUtil.zRemoveValue(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE, jpushMsgTask);
-                }else {
-                    putIntoDelayQueue(jpushMsgTask, EARLY_TIME);
                 }
             }
         });
-
-
+        redisUtil.del(NoticeRedisConsts.MC_JPUSH_DELAY_QUEUE_DEAL_LOCK);
     }
 
 
@@ -118,21 +117,21 @@ public class JpushDelayTaskHandle {
      */
     public boolean putIntoDelayQueue(JpushMsgTask jpushMsgTask, Long score){
         //操作锁
-        while (true) {
-            if (redisUtil.getLock(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE_LOCK,
-                    NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE_LOCK_EXPIRE_TIME)) {
-                if (score == null) {
-                    //新加入的延迟推送,放置当前时间
-                    redisUtil.zAdd(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE, jpushMsgTask, Instant.now().toEpochMilli());
-                } else {
-                    //用于延迟队列中取出还是无法推送的任务，放置再队列的前置位置
-                    redisUtil.zAdd(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE, jpushMsgTask, score);
-                }
-                //去锁
-                redisUtil.del(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE_LOCK);
-                break;
-            }
+//        while (true) {
+//            if (redisUtil.getLock(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE_LOCK,
+//                    NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE_LOCK_EXPIRE_TIME)) {
+        if (score == null) {
+            //新加入的延迟推送,放置当前时间
+            redisUtil.zAdd(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE, jpushMsgTask, Instant.now().toEpochMilli());
+        } else {
+            //用于延迟队列中取出还是无法推送的任务，放置再队列的前置位置
+            redisUtil.zAdd(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE, jpushMsgTask, score);
         }
+                //去锁
+//                redisUtil.del(NoticeRedisConsts.NOTICE_JPUSH_DELAY_QUEUE_LOCK);
+//                break;
+//            }
+//        }
         return true;
     }
 
@@ -161,6 +160,6 @@ public class JpushDelayTaskHandle {
      */
     private boolean pushDelayQueue(JpushMsgTask jpushMsgTask){
         return jpushUtil.pushAlertByTag(jpushMsgTask.getJpushMsg(),
-                    jpushMsgTask.getTags().toArray(new String[jpushMsgTask.getTags().size()]));
+                    jpushMsgTask.getTags().toArray(new String[0]));
     }
 }
