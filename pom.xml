@@ -52,6 +52,8 @@
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
         <security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
 
+        <!--mqtt-->
+        <org.eclipse.paho.mqtt>1.2.4</org.eclipse.paho.mqtt>
 
         <!--utils-->
         <hutool.version>5.2.0</hutool.version>
@@ -78,7 +80,6 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-
 
 
 
@@ -253,8 +254,11 @@
 
 
 
-
-
+            <dependency>
+                <groupId>org.eclipse.paho</groupId>
+                <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+                <version>${org.eclipse.paho.mqtt}</version>
+            </dependency>
 
 
             <!--util-->

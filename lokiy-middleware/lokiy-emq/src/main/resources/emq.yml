@@ -1,0 +1,6 @@
+mqtt:
+  server:
+    username: lokiy
+    password: 123456
+    host: tcp://xxx.xxx.xxx.xx:1883
+    client-id: lokiy_emq_client

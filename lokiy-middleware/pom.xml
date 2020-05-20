@@ -16,6 +16,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>lokiy-redis</module>
+        <module>lokiy-emq</module>
     </modules>
 
 
