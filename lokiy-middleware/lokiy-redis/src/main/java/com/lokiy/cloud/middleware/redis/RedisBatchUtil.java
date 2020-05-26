@@ -87,8 +87,14 @@ public class RedisBatchUtil {
      * 批量插入值，不具有事务性
      * @param kvMap
      */
-    public void multiSet(Map<String, Object> kvMap){
-        redisTemplate.opsForValue().multiSet(kvMap);
+    public boolean multiSet(Map<String, Object> kvMap){
+        try {
+            redisTemplate.opsForValue().multiSet(kvMap);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
 
