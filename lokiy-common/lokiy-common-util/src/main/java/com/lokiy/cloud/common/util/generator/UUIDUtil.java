@@ -7,7 +7,7 @@ import java.util.UUID;
  * @date 2020/5/20 17:29
  * @description: 32位id生成器
  */
-public class IdGeneratorUtil {
+public class UUIDUtil {
     /**
      * 获取32位uuid
      *

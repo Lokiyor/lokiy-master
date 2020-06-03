@@ -1,6 +1,6 @@
 package com.lokiy.cloud.middleware.emq;
 
-import com.lokiy.cloud.common.util.generator.IdGeneratorUtil;
+import com.lokiy.cloud.common.util.generator.UUIDUtil;
 import com.lokiy.cloud.middleware.emq.enums.EmqQosEnum;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ public class SyncSendUtil {
 		}
 		for (int i = 0; i < MAXSIZE; i++) {
 			SyncSendClient client = new SyncSendClient();
-			client.init(IdGeneratorUtil.getUUID32(), config.getHost());
+			client.init(UUIDUtil.getUUID32(), config.getHost());
 			sendFactory.put(i, client);
 		}
 	}
