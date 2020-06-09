@@ -29,7 +29,11 @@
             <scope>test</scope>
         </dependency>
 
-
+        <!--安全模块-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-security</artifactId>
+        </dependency>
 
     </dependencies>
 

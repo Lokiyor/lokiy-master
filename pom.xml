@@ -47,7 +47,8 @@
         <spring-druid.version>1.1.21</spring-druid.version>
         <mysql.version>5.1.47</mysql.version>
 
-        <spring-security.version>2.1.3.RELEASE</spring-security.version>
+        <spring-security.version>2.2.2.RELEASE</spring-security.version>
+        <spring-security-autoconfigure.version>2.3.0.RELEASE</spring-security-autoconfigure.version>
         <spirng-oauth2.version>2.1.3.RELEASE</spirng-oauth2.version>
         <security.oauth.version>2.3.5.RELEASE</security.oauth.version>
         <security.oauth.auto.version>2.1.2.RELEASE</security.oauth.auto.version>
@@ -224,27 +225,30 @@
             </dependency>
 
             <!--oauth-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-starter-security</artifactId>-->
-<!--                <version>${spring-security.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
             <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-security</artifactId>
+                <version>${spring-security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security.oauth.boot</groupId>
+                <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+                <version>${spring-security-autoconfigure.version}</version>
+            </dependency>
+<!--            <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-oauth2</artifactId>
                 <version>${spirng-oauth2.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--不引入会导致spring security bom无法引用倒-->
+            &lt;!&ndash;不引入会导致spring security bom无法引用倒&ndash;&gt;
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-bom</artifactId>
                 <version>5.1.5.RELEASE</version>
                 <type>pom</type>
-            </dependency>
+            </dependency>-->
             <!--redis-->
        <!--     <dependency>
                 <groupId>org.springframework.boot</groupId>
