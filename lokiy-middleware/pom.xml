@@ -17,6 +17,7 @@
     <modules>
         <module>lokiy-redis</module>
         <module>lokiy-emq</module>
+        <module>lokiy-rabbitmq</module>
     </modules>
 
 
