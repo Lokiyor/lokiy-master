@@ -12,7 +12,7 @@ import java.io.Serializable;
 /**
  * @author Lokiy
  * @date 2020/3/19 13:41
- * @description:
+ * @description: map过期对象
  */
 @Data
 @NoArgsConstructor

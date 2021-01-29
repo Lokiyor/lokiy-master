@@ -1,8 +1,6 @@
 package com.lokiy.cloud.middleware.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.RedisCallback;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -24,7 +22,7 @@ public class RedisBatchUtil {
 
     /**
      * 批量插入key
-     * @param kvMap
+     * @param kvMap k-v数据
      */
     public void pipelineSet(Map<String, Object> kvMap){
         RedisSerializer<Object> valueSerializer = (RedisSerializer<Object>) redisTemplate.getValueSerializer();
@@ -37,7 +35,7 @@ public class RedisBatchUtil {
 
     /**
      * 批量查询key
-     * @param keys
+     * @param keys 键集合
      */
     public List<Object> pipelineGet(List<String> keys){
         RedisSerializer<Object> valueSerializer = (RedisSerializer<Object>) redisTemplate.getValueSerializer();
@@ -50,7 +48,7 @@ public class RedisBatchUtil {
 
     /**
      * 批量插入 hset
-     * @param kkvMap
+     * @param kkvMap k-v set数据
      */
     public void piplineHset(Map<String, Map<String, Object>> kkvMap){
         RedisSerializer<Object> hashValueSerializer = (RedisSerializer<Object>) redisTemplate.getHashValueSerializer();
@@ -62,8 +60,8 @@ public class RedisBatchUtil {
 
     /**
      * 批量获取 hget
-     * @param khkMap
-     * @return
+     * @param khkMap key和item
+     * @return 获取的数据对象
      */
     public List<Object> piplineHget(Map<String, String> khkMap){
         RedisSerializer<Object> hashValueSerializer = (RedisSerializer<Object>) redisTemplate.getHashValueSerializer();
@@ -76,8 +74,8 @@ public class RedisBatchUtil {
 
     /**
      * 批量获取值
-     * @param keys
-     * @return
+     * @param keys 键
+     * @return  获取的键对象
      */
     public List<Object> multiGet(List<String> keys){
         return redisTemplate.opsForValue().multiGet(keys);
@@ -85,7 +83,7 @@ public class RedisBatchUtil {
 
     /**
      * 批量插入值，不具有事务性
-     * @param kvMap
+     * @param kvMap k-v集合
      */
     public boolean multiSet(Map<String, Object> kvMap){
         try {
@@ -100,9 +98,9 @@ public class RedisBatchUtil {
 
     /**
      * 获取 h hkey 的数据
-     * @param key
-     * @param hkeys
-     * @return
+     * @param key 键
+     * @param hkeys item集合
+     * @return 批量获取的数据对象值
      */
     public List<Object> multiHGet(String key, List<Object> hkeys){
         return redisTemplate.opsForHash().multiGet(key, hkeys);
