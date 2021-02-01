@@ -7,6 +7,8 @@ spring:
     port: 6379
     ## 单点redis配置结束 end
     password: 123456
+    redisson:
+      file: classpath:redisson.yml
     ## 如果是sentinel，打开以下配置 start
 #    sentinel:
 #      master: mymaster
