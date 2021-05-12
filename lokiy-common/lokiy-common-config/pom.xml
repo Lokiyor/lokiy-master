@@ -42,6 +42,11 @@
             <groupId>com.lokiy.cloud.common</groupId>
             <artifactId>lokiy-common-base</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.lokiy.cloud.common</groupId>
+            <artifactId>lokiy-common-util</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
