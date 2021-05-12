@@ -1,6 +1,7 @@
 package com.lokiy.cloud.common.base.exception;
 
 import com.lokiy.cloud.common.base.enums.CodeEnum;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -9,24 +10,13 @@ import java.io.Serializable;
  * @date 2019/7/17 15:31
  * @description: 业务级异常
  */
+@Data
 public class BusinessException extends RuntimeException implements Serializable {
 
     /**
      * 异常编码
      */
     protected Integer code;
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public BusinessException() {
-        super();
-    }
 
     public BusinessException(String msg) {
         super(msg);

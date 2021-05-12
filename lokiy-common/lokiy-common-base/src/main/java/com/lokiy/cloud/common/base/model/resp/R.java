@@ -2,10 +2,9 @@ package com.lokiy.cloud.common.base.model.resp;
 
 import com.lokiy.cloud.common.base.enums.CodeEnum;
 import com.lokiy.cloud.common.base.exception.BusinessException;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
 
 import java.io.Serializable;
 
@@ -18,37 +17,42 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ApiModel("返回对象")
 public class R<T> implements Serializable {
 
     /**
      * 成功标记
      */
+    @ApiModelProperty("成功标识")
     private boolean success;
 
     /**
      * 编码
      */
+    @ApiModelProperty("返回编码")
     private Integer code;
 
     /**
      * 提示信息
      */
+    @ApiModelProperty("提示信息")
     private String msg;
 
     /**
      * 数据
      */
+    @ApiModelProperty("返回数据")
     private T data;
 
 
     /**
      * 返回结果
-     * @param data
-     * @param <T>
-     * @return
+     * @param data 返回数据
+     * @param <T> 数据类型
+     * @return 返回结果
      */
     public static <T> R result(T data){
-        return new RBuilder<T>()
+        return new RBuilder<>()
                 .success(true)
                 .code(CodeEnum.SUCCESS.getCode())
                 .msg(CodeEnum.SUCCESS.getMsg())
