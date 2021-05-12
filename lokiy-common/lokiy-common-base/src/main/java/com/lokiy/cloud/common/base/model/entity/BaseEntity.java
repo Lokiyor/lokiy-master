@@ -14,15 +14,7 @@ import java.time.LocalDateTime;
  */
 @Data
 @ApiModel
-public class BaseEntity {
-
-    /**
-     * 主键
-     */
-    @TableId(value = "id", type = IdType.INPUT)
-    @TableField(fill = FieldFill.INSERT)
-    @ApiModelProperty("主键id")
-    private Long id;
+public class BaseEntity extends BaseIdEntity{
 
     /**
      * 删除标志位

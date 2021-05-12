@@ -19,7 +19,7 @@ import java.util.function.Supplier;
  */
 @Component
 @Slf4j
-public class LokiyMetaObjectHandler implements MetaObjectHandler {
+public class MybatisPlusMetaObjectHandler implements MetaObjectHandler {
 
     /**
      * 新增时自动填充
