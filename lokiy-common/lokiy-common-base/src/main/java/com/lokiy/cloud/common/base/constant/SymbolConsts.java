@@ -7,6 +7,7 @@ package com.lokiy.cloud.common.base.constant;
  */
 public interface SymbolConsts {
 
+    String EMPTY = "";
     String COMMA = ",";
     String SPOT = ".";
     String COLON = ":";

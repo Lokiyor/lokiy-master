@@ -1,5 +1,7 @@
 package com.lokiy.cloud.common.util.generator;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.util.UUID;
 
 /**
@@ -14,6 +16,6 @@ public class UUIDUtil {
      * @return 32位uuid
      */
     public static String getUUID32() {
-        return UUID.randomUUID().toString().replaceAll("-", "");
+        return UUID.randomUUID().toString().replaceAll(StrUtil.DASHED, StrUtil.EMPTY);
     }
 }
