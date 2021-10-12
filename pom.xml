@@ -69,7 +69,7 @@
         <fastjson.version>1.2.66</fastjson.version>
 
         <!--任务调度中心-->
-        <xxl-job.version>2.1.2</xxl-job.version>
+        <xxl-job.version>2.3.0</xxl-job.version>
     </properties>
 
     <!--全局依赖-->
